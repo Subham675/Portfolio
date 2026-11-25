@@ -54,11 +54,11 @@
         </a>
 
         <div class="nav-links">
-          <a href="#work" class="nav-link" data-cursor="Jump ↓">Work</a>
-          <a href="#experience" class="nav-link" data-cursor="Jump ↓">Experience</a>
-          <a href="#resume" class="nav-link" data-cursor="Jump ↓">Resume</a>
-          <a href="#about" class="nav-link" data-cursor="Jump ↓">About</a>
-          <a href="#contact" class="nav-link" data-cursor="Jump ↓">Contact</a>
+          <a href="#work" class="nav-link" data-nav-target="work" data-cursor="Jump ↓">Work</a>
+          <a href="#experience" class="nav-link" data-nav-target="experience" data-cursor="Jump ↓">Experience</a>
+          <a href="#resume" class="nav-link" data-nav-target="resume" data-cursor="Jump ↓">Resume</a>
+          <a href="#about" class="nav-link" data-nav-target="about" data-cursor="Jump ↓">About</a>
+          <a href="#contact" class="nav-link" data-nav-target="contact" data-cursor="Jump ↓">Contact</a>
         </div>
 
         <div class="nav-actions">
@@ -78,26 +78,51 @@
           </a>
 
           <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" data-cursor="Menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <svg class="menu-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+            <svg class="menu-icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"/>
             </svg>
           </button>
         </div>
       </nav>
 
       <div id="mobile-menu" class="mobile-menu" hidden>
-        <a href="#work" class="mobile-menu-link"><span>Work</span><span aria-hidden="true">↓</span></a>
-        <a href="#experience" class="mobile-menu-link"><span>Experience</span><span aria-hidden="true">↓</span></a>
-        <a href="#resume" class="mobile-menu-link"><span>Resume</span><span aria-hidden="true">↓</span></a>
-        <a href="#about" class="mobile-menu-link"><span>About</span><span aria-hidden="true">↓</span></a>
-        <a href="#contact" class="mobile-menu-link"><span>Contact</span><span aria-hidden="true">↓</span></a>
-        <a href="mailto:karmakarsubham194@gmail.com" class="btn btn-primary" style="margin-top:0.35rem">
-          <span>Email me</span>
-          <span aria-hidden="true">↗</span>
+        <a href="#work" class="mobile-menu-link" data-nav-target="work">
+          <span class="mobile-menu-link-main"><span class="mobile-menu-num">01</span><span>Work</span></span>
+          <span aria-hidden="true">↓</span>
         </a>
+        <a href="#experience" class="mobile-menu-link" data-nav-target="experience">
+          <span class="mobile-menu-link-main"><span class="mobile-menu-num">03</span><span>Experience</span></span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="#resume" class="mobile-menu-link" data-nav-target="resume">
+          <span class="mobile-menu-link-main"><span class="mobile-menu-num">04</span><span>Resume / CV</span></span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="#about" class="mobile-menu-link" data-nav-target="about">
+          <span class="mobile-menu-link-main"><span class="mobile-menu-num">05</span><span>About</span></span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href="#contact" class="mobile-menu-link" data-nav-target="contact">
+          <span class="mobile-menu-link-main"><span class="mobile-menu-num">06</span><span>Contact</span></span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <div class="mobile-menu-actions">
+          <a href="mailto:karmakarsubham194@gmail.com" class="btn btn-primary">
+            <span>Email me</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href="https://wa.me/917584043554?text=Hi%20Subham%2C%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>WhatsApp</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
+  <div class="mobile-menu-backdrop" data-menu-backdrop hidden></div>
 
   <main id="main">
     <!-- Hero & Bento Overview -->
@@ -853,7 +878,7 @@
               </div>
               <div class="cv-highlight-row">
                 <span class="cv-highlight-label">Email</span>
-                <span class="cv-highlight-value">karmakarsubham194@gmail.com</span>
+                <a href="mailto:karmakarsubham194@gmail.com" class="cv-highlight-value cv-highlight-link">karmakarsubham194@gmail.com</a>
               </div>
             </div>
           </div>
@@ -867,16 +892,23 @@
                 <span class="cv-chrome-dot" aria-hidden="true"></span>
                 <span class="cv-preview-filename">Subham_Karmakar_CV.pdf</span>
               </div>
-              <a
-                href="./assets/Subham_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="cv-preview-open-btn"
-                data-cursor="Open ↗"
-              >
-                <span>Open full screen</span>
-                <span aria-hidden="true">↗</span>
-              </a>
+              <div class="cv-preview-controls">
+                <div class="cv-zoom-controls" aria-label="Resume zoom controls">
+                  <button type="button" class="cv-zoom-btn" data-cv-zoom-out aria-label="Zoom out resume" disabled>−</button>
+                  <span class="cv-zoom-label" data-cv-zoom-label aria-live="polite">100%</span>
+                  <button type="button" class="cv-zoom-btn" data-cv-zoom-in aria-label="Zoom in resume">+</button>
+                </div>
+                <a
+                  href="./assets/Subham_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cv-preview-open-btn"
+                  data-cursor="Open ↗"
+                >
+                  <span>Full screen</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
 
             <!-- PDF.js canvas render — works on iOS, Android, desktop -->
@@ -966,12 +998,16 @@
             </h2>
 
             <div class="contact-cta-row">
-              <a href="mailto:karmakarsubham194@gmail.com" class="btn btn-ink magnetic" data-cursor="Email">
+              <a href="mailto:karmakarsubham194@gmail.com" class="btn btn-ink magnetic contact-email-btn" data-cursor="Email">
                 <span>karmakarsubham194@gmail.com</span>
                 <span aria-hidden="true">↗</span>
               </a>
+              <button type="button" class="btn btn-lime-ghost magnetic" data-copy-email="karmakarsubham194@gmail.com" data-cursor="Copy">
+                <span>Copy email</span>
+              </button>
               <a href="https://wa.me/917584043554?text=Hi%20Subham%2C%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="btn btn-lime-ghost magnetic" data-cursor="WhatsApp ↗">
-                <span>Message on WhatsApp</span>
+                <span>WhatsApp</span>
+                <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
@@ -1116,6 +1152,11 @@
       </div>
     </div>
   </footer>
+
+  <button type="button" class="back-to-top" data-back-to-top aria-label="Scroll back to top" hidden>
+    <span aria-hidden="true">↑</span>
+    <span>Top</span>
+  </button>
 
   <script src="./assets/js/main.js" defer></script>
 </body>

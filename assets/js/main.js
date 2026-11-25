@@ -78,15 +78,18 @@
   }
 
   /* ------------------------------------------------------------------------
-     2. Mobile Menu Toggle
+     2. Mobile Menu Toggle, Backdrop & Active Section Highlight
      ------------------------------------------------------------------------ */
   const menuBtn = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.getElementById('mobile-menu');
+  const menuBackdrop = document.querySelector('[data-menu-backdrop]');
 
   const setMenuOpen = (open) => {
     if (!menuBtn || !mobileMenu) return;
     mobileMenu.hidden = !open;
+    if (menuBackdrop) menuBackdrop.hidden = !open;
     menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
   };
 
   if (menuBtn && mobileMenu) {
@@ -94,6 +97,10 @@
       e.stopPropagation();
       setMenuOpen(mobileMenu.hidden);
     });
+
+    if (menuBackdrop) {
+      menuBackdrop.addEventListener('click', () => setMenuOpen(false));
+    }
 
     mobileMenu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setMenuOpen(false));
@@ -111,6 +118,39 @@
         menuBtn.focus();
       }
     });
+  }
+
+  const navTargets = Array.from(document.querySelectorAll('[data-nav-target]'));
+  const observedSections = ['work', 'experience', 'resume', 'about', 'contact']
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  if (navTargets.length > 0 && observedSections.length > 0 && 'IntersectionObserver' in window) {
+    const setActiveNav = (activeId) => {
+      navTargets.forEach((link) => {
+        const isActive = link.getAttribute('data-nav-target') === activeId;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible.length > 0) {
+          setActiveNav(visible[0].target.id);
+        }
+      },
+      { threshold: [0.15, 0.35], rootMargin: '-20% 0px -55% 0px' }
+    );
+
+    observedSections.forEach((sec) => navObserver.observe(sec));
   }
 
   /* ------------------------------------------------------------------------
@@ -386,12 +426,48 @@
   }
 
   /* ------------------------------------------------------------------------
-     7. Inline CV PDF Renderer via Local PDF.js (iOS Safari, Android, Desktop)
+     7. Inline CV PDF Renderer + Mobile Zoom Controls (PDF.js)
      ------------------------------------------------------------------------ */
   const cvShell = document.getElementById('cv-canvas-shell');
   const cvLoading = document.getElementById('cv-loading');
   const cvContainer = document.getElementById('cv-canvas-container');
   const cvFallback = document.getElementById('cv-fallback');
+  const zoomOutBtn = document.querySelector('[data-cv-zoom-out]');
+  const zoomInBtn = document.querySelector('[data-cv-zoom-in]');
+  const zoomLabel = document.querySelector('[data-cv-zoom-label]');
+
+  const ZOOM_LEVELS = [1, 1.35, 1.7, 2.1];
+  let zoomIndex = 0;
+
+  const applyCvZoom = () => {
+    const scale = ZOOM_LEVELS[zoomIndex];
+    if (cvContainer) {
+      cvContainer.style.width = `${Math.round(scale * 100)}%`;
+    }
+    if (zoomLabel) {
+      zoomLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+    if (zoomOutBtn) zoomOutBtn.disabled = zoomIndex <= 0;
+    if (zoomInBtn) zoomInBtn.disabled = zoomIndex >= ZOOM_LEVELS.length - 1;
+  };
+
+  if (zoomOutBtn) {
+    zoomOutBtn.addEventListener('click', () => {
+      if (zoomIndex > 0) {
+        zoomIndex -= 1;
+        applyCvZoom();
+      }
+    });
+  }
+
+  if (zoomInBtn) {
+    zoomInBtn.addEventListener('click', () => {
+      if (zoomIndex < ZOOM_LEVELS.length - 1) {
+        zoomIndex += 1;
+        applyCvZoom();
+      }
+    });
+  }
 
   const showCvFallback = () => {
     if (cvShell) cvShell.hidden = true;
@@ -416,15 +492,17 @@
 
       const renderPdfPages = async () => {
         if (!pdfDoc) return;
-        const containerWidth = Math.floor(cvContainer.clientWidth);
-        if (!containerWidth) {
+        const shellWidth = Math.floor(cvShell.clientWidth - 20);
+        const containerWidth = Math.max(240, shellWidth);
+        if (!shellWidth) {
           requestAnimationFrame(renderPdfPages);
           return;
         }
         if (Math.abs(containerWidth - lastRenderedWidth) < 10) return;
 
         const token = ++renderToken;
-        const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+        // Render at >= 2x resolution so zooming in on mobile stays sharp
+        const dpr = Math.min(Math.max(window.devicePixelRatio || 1, 2), 2.75);
         const fragment = document.createDocumentFragment();
 
         try {
@@ -452,6 +530,7 @@
           cvContainer.innerHTML = '';
           cvContainer.appendChild(fragment);
           lastRenderedWidth = containerWidth;
+          applyCvZoom();
           if (cvLoading) cvLoading.hidden = true;
         } catch (err) {
           showCvFallback();
@@ -477,5 +556,72 @@
         { passive: true }
       );
     }
+  }
+
+  /* ------------------------------------------------------------------------
+     8. One-Tap Email Copy & Floating Back-to-Top Button
+     ------------------------------------------------------------------------ */
+  document.querySelectorAll('[data-copy-email]').forEach((btn) => {
+    const labelEl = btn.querySelector('span');
+    const originalText = labelEl ? labelEl.textContent : btn.textContent;
+    let resetTimer = 0;
+
+    btn.addEventListener('click', async () => {
+      const email = btn.getAttribute('data-copy-email') || '';
+      if (!email) return;
+
+      let copied = false;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(email);
+          copied = true;
+        }
+      } catch {
+        copied = false;
+      }
+
+      if (!copied) {
+        const tmp = document.createElement('textarea');
+        tmp.value = email;
+        tmp.setAttribute('readonly', '');
+        tmp.style.position = 'fixed';
+        tmp.style.opacity = '0';
+        document.body.appendChild(tmp);
+        tmp.select();
+        try {
+          copied = document.execCommand('copy');
+        } catch {
+          copied = false;
+        }
+        document.body.removeChild(tmp);
+      }
+
+      if (copied && labelEl) {
+        clearTimeout(resetTimer);
+        labelEl.textContent = 'Copied! ✓';
+        resetTimer = setTimeout(() => {
+          labelEl.textContent = originalText;
+        }, 2000);
+      }
+    });
+  });
+
+  const backToTopBtn = document.querySelector('[data-back-to-top]');
+  if (backToTopBtn) {
+    backToTopBtn.hidden = false;
+
+    const syncBackToTop = () => {
+      backToTopBtn.classList.toggle('is-visible', window.scrollY > 480);
+    };
+
+    window.addEventListener('scroll', syncBackToTop, { passive: true });
+    syncBackToTop();
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion ? 'auto' : 'smooth',
+      });
+    });
   }
 })();
