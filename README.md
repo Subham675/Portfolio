@@ -8,12 +8,13 @@ Personal portfolio website for **Subham Karmakar** (`.NET Developer`), designed 
 
 - **Light & Dark Theme Toggle** — Persists preference in `localStorage`, respects system theme, syncs mobile `<meta name="theme-color">`, and transitions with a circular View Transitions wipe.
 - **Hero & Bento Overview** — Live India (`IST / UTC+5:30`) clock pill, animated stat counters, grouped tech stack chips, and an infinite tech marquee strip.
-- **Sticky-Stacking Work Cards** — Scroll-driven scale & dim progression across 5 featured builds:
+- **Sticky-Stacking Work Cards** — Scroll-driven scale & dim progression across 6 featured builds:
   - **CityHangAround** *(Honeybee Digital Internship · Laravel → Next.js migration)*
   - **Issue-Tracker** *(ASP.NET Core MVC `.NET 10`, EF Core, LINQ, SQL Server, Razor, Bootstrap)*
   - **Myra — AI Voice Assistant** *(Python, LiveKit, Google Realtime API, `asyncio`)*
   - **Advanced PHP Online Quiz App** *(PHP, MySQL, Google Gemini API, 11-table relational schema)*
   - **Terminal 1** *(Fine Dining & Table Reservation Platform · PHP MVC, Razorpay, Google OAuth 2.0, Docker, PHPUnit)*
+  - **CommonGround · Local** *(Classifieds Marketplace · Laravel 11 MVC, Breeze Auth, Eloquent ORM, Tailwind CSS, AJAX)*
 - **Resume & Developer Essentials** — Direct one-click download for [Subham karmakar Resume.docx](./assets/Subham%20karmakar%20Resume.docx), alongside a compact bento grid covering engineering focus, extended databases/AI tools, academic credentials, and quick contact links.
 - **Day/Night Animated Skyline Footer** — Custom SVG Cooch Behar rooftop & heritage skyline that switches sun/moon, stars, and lit windows between Light and Dark modes.
 
@@ -40,7 +41,13 @@ Portfolio/
         ├── about-night.jpg
         ├── avatar-suit.jpg
         └── projects/
-            └── cityhangaround.png
+            ├── cityhangaround.png
+            ├── cityhangaround-nextjs.png
+            ├── issue-tracker.png
+            ├── myra.jpg
+            ├── quiz-app.jpg
+            ├── terminal1.jpg
+            └── marketplace.png
 ```
 
 ---
