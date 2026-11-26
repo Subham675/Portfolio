@@ -1,6 +1,6 @@
 # Subham Karmakar — Developer Portfolio
 
-Personal portfolio website for **Subham Karmakar** (`.NET Full-Stack Developer`), designed with a warm-paper & obsidian bento layout, electric lime (`#C8F560`) accents, sticky-stacking project cards, and a mobile-friendly inline CV viewer.
+Personal portfolio website for **Subham Karmakar** (`.NET Developer`), designed with a warm-paper & obsidian bento layout, electric lime (`#C8F560`) accents, sticky-stacking project cards, and a mobile-friendly inline CV viewer.
 
 ---
 
