@@ -1,6 +1,6 @@
 # Subham Karmakar — Developer Portfolio
 
-Personal portfolio website for **Subham Karmakar** (`.NET Developer`), designed with a warm-paper & obsidian bento layout, electric lime (`#C8F560`) accents, sticky-stacking project cards, and a mobile-friendly inline CV viewer.
+Personal portfolio website for **Subham Karmakar** (`.NET Developer`), designed with a warm-paper & obsidian bento layout, electric lime (`#C8F560`) accents, sticky-stacking project cards, and a streamlined resume & developer essentials section.
 
 ---
 
@@ -14,7 +14,7 @@ Personal portfolio website for **Subham Karmakar** (`.NET Developer`), designed 
   - **Myra — AI Voice Assistant** *(Python, LiveKit, Google Realtime API, `asyncio`)*
   - **Advanced PHP Online Quiz App** *(PHP, MySQL, Google Gemini API, 11-table relational schema)*
   - **Terminal 1** *(Fine Dining & Table Reservation Platform · PHP MVC, Razorpay, Google OAuth 2.0, Docker, PHPUnit)*
-- **Cross-Device Inline CV Viewer** — Self-hosted **PDF.js** (`assets/vendor/pdfjs/`) renders [Subham_Resume.pdf](./assets/Subham_Resume.pdf) crisply on **Android, iOS Safari, and Desktop**, alongside one-click Download and full-screen open actions.
+- **Resume & Developer Essentials** — Direct one-click download for [Subham karmakar Resume.docx](./assets/Subham%20karmakar%20Resume.docx), alongside a compact bento grid covering engineering focus, extended databases/AI tools, academic credentials, and quick contact links.
 - **Day/Night Animated Skyline Footer** — Custom SVG Cooch Behar rooftop & heritage skyline that switches sun/moon, stars, and lit windows between Light and Dark modes.
 
 ---
@@ -23,17 +23,16 @@ Personal portfolio website for **Subham Karmakar** (`.NET Developer`), designed 
 
 ```text
 Portfolio/
-├── index.html                        # Main semantic HTML page & SEO/JSON-LD metadata
-├── vercel.json                       # Vercel static hosting & inline PDF header rules
+├── index.html                           # Main semantic HTML page & SEO/JSON-LD metadata
+├── vercel.json                          # Vercel static hosting configuration
 ├── .gitignore
 ├── README.md
 └── assets/
-    ├── Subham_Resume.pdf             # Embedded & downloadable CV PDF
+    ├── Subham karmakar Resume.docx      # Downloadable updated Word resume
     ├── css/
-    │   └── main.css                  # Theme tokens, bento grid, cards, animations
+    │   └── main.css                     # Theme tokens, bento grid, cards, animations
     ├── js/
-    │   └── main.js                   # Theme wipe, clock, stack progress, PDF.js renderer
-    ├── vendor/pdfjs/                 # Self-hosted PDF.js library & worker (v3.11.174)
+    │   └── main.js                      # Theme wipe, clock, stack progress, clipboard helper
     └── images/
         ├── favicon.svg
         ├── hero-portrait.jpg
@@ -51,13 +50,13 @@ Portfolio/
 1. Go to [vercel.com/new](https://vercel.com/new) and sign in with GitHub.
 2. Import **`Subham675/Portfolio`**.
 3. Keep **Framework Preset** set to **Other** (zero build step needed) and click **Deploy**.
-4. `vercel.json` automatically sets `cleanUrls` and serves `/assets/Subham_Resume.pdf` inline as `application/pdf`.
+4. `vercel.json` automatically enables `cleanUrls` for clean static routing.
 
 ---
 
 ## 💻 Local Preview
 
-Run any static HTTP server from the repository root (avoid `file://` so PDF.js can fetch the local PDF):
+Run any static HTTP server from the repository root:
 
 ```bash
 npx serve .

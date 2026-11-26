@@ -15,8 +15,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <!-- Local PDF.js — reliable inline CV rendering on iOS, Android & desktop -->
-  <script src="./assets/vendor/pdfjs/pdf.min.js" defer></script>
   <link rel="stylesheet" href="./assets/css/main.css">
   <script type="application/ld+json">
     {
@@ -767,7 +765,7 @@
                   </p>
                 </div>
               </div>
-              <div class="exp-date">Certification</div>
+              <div class="exp-date">5 Months · Certification</div>
             </li>
 
             <li class="exp-row" data-reveal>
@@ -806,28 +804,28 @@
       </div>
     </section>
 
-    <!-- 04 / Resume / CV -->
+    <!-- 04 / Resume & Essentials -->
     <section id="resume" class="section-pad">
       <div class="container-page">
         <div class="cv-section-grid">
 
-          <!-- Left: Info + actions + highlights -->
+          <!-- Left: Resume Download + Key Snapshot -->
           <div class="tile spotlight cv-info-card" data-reveal>
             <div>
               <span class="eyebrow">04 / Resume</span>
               <h2 class="cv-info-heading" data-split>
-                My full CV, right here in the page.
+                Resume &amp; quick profile snapshot.
               </h2>
             </div>
 
             <p class="cv-info-body">
-              Everything in one place — my experience at Honeybee Digital, .NET and PHP projects, IGNOU BCA degree, EJOBINDIA certification, and full skill stack. Download it or scroll through it on the right.
+              Download my updated Word resume (.docx) for a structured copy of my .NET training, internship delivery, projects, and technical stack—or connect directly below.
             </p>
 
             <div class="cv-actions">
               <a
-                href="./assets/Subham_Resume.pdf"
-                download="Subham_Karmakar_CV.pdf"
+                href="./assets/Subham%20karmakar%20Resume.docx"
+                download="Subham_Karmakar_Resume.docx"
                 class="btn btn-primary magnetic"
                 data-cursor="Download"
               >
@@ -836,45 +834,35 @@
                   <polyline points="7 10 12 15 17 10"/>
                   <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                <span>Download CV</span>
+                <span>Download Resume</span>
               </a>
               <a
-                href="./assets/Subham_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 class="btn btn-ghost magnetic"
-                data-cursor="Open ↗"
+                data-cursor="Contact ↓"
               >
-                <span>Open in new tab</span>
-                <span aria-hidden="true">↗</span>
+                <span>Reach out</span>
+                <span aria-hidden="true">↓</span>
               </a>
             </div>
 
-            <!-- Key CV highlights at a glance -->
-            <div class="cv-highlights" aria-label="CV highlights">
+            <!-- Quick Resume Snapshot -->
+            <div class="cv-highlights" aria-label="Resume snapshot">
               <div class="cv-highlight-row">
                 <span class="cv-highlight-label">Role</span>
                 <span class="cv-highlight-value">.NET Developer</span>
+              </div>
+              <div class="cv-highlight-row">
+                <span class="cv-highlight-label">Format</span>
+                <span class="cv-highlight-value">Word Document (.docx)</span>
               </div>
               <div class="cv-highlight-row">
                 <span class="cv-highlight-label">Location</span>
                 <span class="cv-highlight-value">Cooch Behar, West Bengal, India</span>
               </div>
               <div class="cv-highlight-row">
-                <span class="cv-highlight-label">Experience</span>
-                <span class="cv-highlight-value">Web Dev Intern · Honeybee Digital (3 mo)</span>
-              </div>
-              <div class="cv-highlight-row">
-                <span class="cv-highlight-label">Education</span>
-                <span class="cv-highlight-value">BCA · IGNOU · Expected Jun 2027</span>
-              </div>
-              <div class="cv-highlight-row">
-                <span class="cv-highlight-label">Certification</span>
-                <span class="cv-highlight-value">.NET Developer Training · EJOBINDIA</span>
-              </div>
-              <div class="cv-highlight-row">
-                <span class="cv-highlight-label">Award</span>
-                <span class="cv-highlight-value">Intern of the Month · Sep 2026</span>
+                <span class="cv-highlight-label">Phone</span>
+                <a href="tel:+917584043554" class="cv-highlight-value cv-highlight-link">+91 7584043554</a>
               </div>
               <div class="cv-highlight-row">
                 <span class="cv-highlight-label">Email</span>
@@ -883,55 +871,130 @@
             </div>
           </div>
 
-          <!-- Right: Inline PDF preview in a browser-chrome frame -->
-          <div class="cv-preview-card" data-reveal>
-            <div class="cv-preview-chrome">
-              <div class="cv-preview-chrome-left">
-                <span class="cv-chrome-dot" aria-hidden="true"></span>
-                <span class="cv-chrome-dot" aria-hidden="true"></span>
-                <span class="cv-chrome-dot" aria-hidden="true"></span>
-                <span class="cv-preview-filename">Subham_Karmakar_CV.pdf</span>
+          <!-- Right: Essential Details Bento Grid (reclaiming CV preview space) -->
+          <div class="cv-essentials-grid">
+
+            <!-- Summary & Engineering Focus -->
+            <article class="tile spotlight ess-card ess-card--full" data-reveal>
+              <div class="ess-header-row">
+                <span class="label">PROFILE SUMMARY</span>
+                <span class="ess-status-badge">
+                  <span class="pulse-dot" aria-hidden="true"></span>
+                  <span>Open to .NET &amp; Backend roles</span>
+                </span>
               </div>
-              <div class="cv-preview-controls">
-                <div class="cv-zoom-controls" aria-label="Resume zoom controls">
-                  <button type="button" class="cv-zoom-btn" data-cv-zoom-out aria-label="Zoom out resume" disabled>−</button>
-                  <span class="cv-zoom-label" data-cv-zoom-label aria-live="polite">100%</span>
-                  <button type="button" class="cv-zoom-btn" data-cv-zoom-in aria-label="Zoom in resume">+</button>
+              <p class="ess-summary">
+                Focused on building responsive web applications, reliable backend APIs, and well-structured relational databases. I prioritize clean, scalable, production-ready code and solving real-world software problems.
+              </p>
+              <div class="ess-pillars">
+                <div class="ess-pillar">
+                  <h3 class="ess-pillar-title">Clean Architecture &amp; Data</h3>
+                  <p class="ess-pillar-desc">ASP.NET Core MVC, ADO.NET, EF Core eager loading, normalized multi-table SQL schemas, and UTC timestamp handling.</p>
                 </div>
-                <a
-                  href="./assets/Subham_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="cv-preview-open-btn"
-                  data-cursor="Open ↗"
-                >
-                  <span>Full screen</span>
+                <div class="ess-pillar">
+                  <h3 class="ess-pillar-title">Security, APIs &amp; Delivery</h3>
+                  <p class="ess-pillar-desc">REST &amp; Web APIs, email OTP &amp; bcrypt auth, CSRF &amp; rate-limiting defense, manual QA testing, and handover docs.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Extended Skills, Databases & Tools from updated CV -->
+            <article class="tile spotlight ess-card" data-reveal>
+              <span class="label">EXTENDED TOOLKIT</span>
+              <div class="ess-stack-groups">
+                <div>
+                  <div class="ess-group-label">Databases &amp; Caching</div>
+                  <div class="ess-chips">
+                    <span class="chip">SQL Server</span>
+                    <span class="chip">MySQL</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">Redis</span>
+                    <span class="chip">Supabase</span>
+                    <span class="chip">Firebase</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="ess-group-label">APIs, AI &amp; Dev Tools</div>
+                  <div class="ess-chips">
+                    <span class="chip">REST / Web APIs</span>
+                    <span class="chip">ADO.NET</span>
+                    <span class="chip">OpenAI (GPT-4)</span>
+                    <span class="chip">Gemini API</span>
+                    <span class="chip">Agentic AI</span>
+                    <span class="chip">Postman</span>
+                    <span class="chip">Composer</span>
+                    <span class="chip">XAMPP</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip">C / C++</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Academic & Certification Milestones from updated CV -->
+            <article class="tile spotlight ess-card" data-reveal>
+              <span class="label">CREDENTIALS &amp; EDUCATION</span>
+              <ul class="ess-cred-list">
+                <li class="ess-cred-item">
+                  <div class="ess-cred-main">
+                    <div class="ess-cred-title">.NET Developer Training</div>
+                    <div class="ess-cred-sub">EJOBINDIA · Intensive Program</div>
+                  </div>
+                  <span class="ess-cred-meta">5 Months</span>
+                </li>
+                <li class="ess-cred-item">
+                  <div class="ess-cred-main">
+                    <div class="ess-cred-title">Web Development Internship</div>
+                    <div class="ess-cred-sub">Honeybee Digital · Completion Certificate</div>
+                  </div>
+                  <span class="ess-cred-meta">3 Months</span>
+                </li>
+                <li class="ess-cred-item">
+                  <div class="ess-cred-main">
+                    <div class="ess-cred-title">Intern of the Month</div>
+                    <div class="ess-cred-sub">Honeybee Digital Performance Award</div>
+                  </div>
+                  <span class="ess-cred-meta">Sep 2026</span>
+                </li>
+                <li class="ess-cred-item">
+                  <div class="ess-cred-main">
+                    <div class="ess-cred-title">Bachelor of Computer Applications</div>
+                    <div class="ess-cred-sub">IGNOU · Computer Applications</div>
+                  </div>
+                  <span class="ess-cred-meta">2024 – 2027</span>
+                </li>
+                <li class="ess-cred-item">
+                  <div class="ess-cred-main">
+                    <div class="ess-cred-title">HS &amp; Madhyamik</div>
+                    <div class="ess-cred-sub">Jenkins School, Cooch Behar</div>
+                  </div>
+                  <span class="ess-cred-meta">67.8% · 68.57%</span>
+                </li>
+              </ul>
+            </article>
+
+            <!-- Quick Links & Collaboration Strip -->
+            <article class="tile spotlight ess-card ess-card--full ess-reach-card" data-reveal>
+              <div class="ess-reach-copy">
+                <span class="label">QUICK CONNECT</span>
+                <p class="ess-reach-note">Explore repositories, connect professionally, or message directly.</p>
+              </div>
+              <div class="ess-reach-links">
+                <a href="https://github.com/Subham675" target="_blank" rel="noopener noreferrer" class="ess-reach-pill" data-cursor="GitHub ↗">
+                  <span>GitHub</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a href="https://linkedin.com/in/subham-karmakar" target="_blank" rel="noopener noreferrer" class="ess-reach-pill" data-cursor="LinkedIn ↗">
+                  <span>LinkedIn</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a href="https://wa.me/917584043554?text=Hi%20Subham%2C%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="ess-reach-pill" data-cursor="WhatsApp ↗">
+                  <span>WhatsApp</span>
                   <span aria-hidden="true">↗</span>
                 </a>
               </div>
-            </div>
+            </article>
 
-            <!-- PDF.js canvas render — works on iOS, Android, desktop -->
-            <div class="cv-canvas-shell" id="cv-canvas-shell">
-              <div class="cv-loading" id="cv-loading" aria-live="polite">
-                <div class="cv-spinner" aria-hidden="true"></div>
-                <span>Loading CV…</span>
-              </div>
-              <div id="cv-canvas-container" class="cv-canvas-container" aria-label="Embedded view of Subham Karmakar's CV"></div>
-            </div>
-
-            <!-- Fallback: shown only if PDF.js itself fails -->
-            <div class="cv-fallback" id="cv-fallback" aria-hidden="true">
-              <div class="cv-fallback-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
-                  <path d="M14 2v6h6"/>
-                  <path d="M10 11h4M10 15h4M10 19h2"/>
-                </svg>
-              </div>
-              <div class="cv-fallback-title">Could not load PDF preview</div>
-              <p class="cv-fallback-hint">Use the buttons on the left to download or open in a new tab.</p>
-            </div>
           </div>
 
         </div>
