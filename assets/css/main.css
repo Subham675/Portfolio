@@ -1125,16 +1125,22 @@ body[id] {
 .stack-list {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .stack-list {
+    gap: 1.75rem;
+  }
 }
 
 .stack-card {
-  position: relative;
+  position: sticky;
+  top: calc(4.5rem + var(--stack-index, 0) * 0.65rem);
 }
 
 @media (min-width: 768px) {
   .stack-card {
-    position: sticky;
     top: calc(5.5rem + var(--stack-index, 0) * 1.15rem);
   }
 }

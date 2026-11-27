@@ -312,7 +312,7 @@
   const stackCards = Array.from(document.querySelectorAll('.stack-card'));
 
   const updateStackCards = () => {
-    if (reducedMotion || window.innerWidth < 768 || stackCards.length === 0) {
+    if (reducedMotion || stackCards.length === 0) {
       stackCards.forEach((card) => card.style.setProperty('--p', '0'));
       return;
     }
